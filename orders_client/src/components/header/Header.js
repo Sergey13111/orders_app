@@ -61,6 +61,11 @@ const Header = () => {
 									</NavLink>
 									<NavLink
 										className={styles.navLink}
+										to='/orderHistory'>
+										Order History
+									</NavLink>
+									<NavLink
+										className={styles.navLink}
 										to='/CartOrders'>
 										<div className={styles.svgWrapper}>
 											<svg

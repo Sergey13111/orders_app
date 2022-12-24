@@ -1,9 +1,10 @@
 import { Button, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { clearItems } from '../../store/cartOrdersSlice';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { clearItems, fetchCreateOrder } from '../../store/cartOrdersSlice';
 import { CartItem } from '../CartItem';
 import styles from './Cart.module.css';
+
 
 const Cart = () => {
 	const navigate = useNavigate();
@@ -18,7 +19,17 @@ const Cart = () => {
 		}
 	};
 
-	const handlerCheckout = () => {};
+	const handlerCheckout = async () => {
+		try {
+			console.log(items, totalPrice);
+			await dispatch(fetchCreateOrder({ items, totalPrice }));
+			dispatch(clearItems());
+			localStorage.removeItem('cart');
+			navigate(`/products`, { replace: true });
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<>
@@ -33,7 +44,7 @@ const Cart = () => {
 							width='20'
 							height='20'
 							fill='#dd3b13c1'
-							class='bi bi-trash'
+							className='bi bi-trash'
 							viewBox='0 0 18 18'>
 							<path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z' />
 							<path
@@ -73,7 +84,7 @@ const Cart = () => {
 							width='16'
 							height='16'
 							fill='currentColor'
-							class='bi bi-box-arrow-left'
+							className='bi bi-box-arrow-left'
 							viewBox='0 0 16 16'>
 							<path
 								fillRule='evenodd'
@@ -96,6 +107,7 @@ const Cart = () => {
 					</Button>
 				</Col>
 			</Row>
+			<Outlet />
 		</>
 	);
 };

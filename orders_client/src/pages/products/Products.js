@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { addItem } from '../../store/cartOrdersSlice';
 import { fetchProducts } from '../../store/productsSlice';
@@ -115,6 +116,7 @@ const Products = () => {
 					</Row>
 				</div>
 			</Container>
+			<Outlet />
 		</>
 	);
 };

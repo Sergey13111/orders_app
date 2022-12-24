@@ -6,9 +6,7 @@ import { NotFound } from '../pages/notFound';
 import { SignUp } from '../pages/signUp';
 import { LogIn } from '../pages/logIn';
 import { CartOrders } from '../pages/cartOrders';
-// import { Company } from '../pages/company';
-// import { CreateCompany } from '../pages/createCompany';
-// import { Profile } from '../pages/profile';
+import { OrdersHistory } from '../pages/ordersHistory';
 
 const Routers = () => {
 	return (
@@ -32,6 +30,10 @@ const Routers = () => {
 			<Route
 				path='cartOrders'
 				element={<CartOrders />}
+			/>
+			<Route
+				path='orderHistory'
+				element={<OrdersHistory />}
 			/>
 			<Route
 				path='*'

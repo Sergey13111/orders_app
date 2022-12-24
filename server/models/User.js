@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		orderId: { type: mongoose.Schema.Types.ObjectId, ref: 'Order', required: true },
 		// avatarUrl: String,
 	},
 	{

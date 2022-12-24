@@ -4,9 +4,9 @@ const orderSchema = new mongoose.Schema(
 	{
 		items: [
 			{
-				// slug: { type: String, required: true },
+				_id: { type: String, required: true },
 				productName: { type: String, required: true },
-				model: { type: String, required: true, unique: true },
+				model: { type: String, required: true },
 				price: { type: String, required: true },
 				count: { type: Number, required: true },
 

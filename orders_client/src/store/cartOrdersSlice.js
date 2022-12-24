@@ -1,20 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { calcTotalPrice } from '../helpers/calcTotalPrice';
 import { getCartFromLS } from '../helpers/getCartFromLS';
-// import axios from '../helpers/axios';
+import axios from '../helpers/axios';
 
-// export const fetchCreateOrder = createAsyncThunk(
-// 	'cart/fetchCreateOrder',
-// 	async (params, thunkAPI) => {
-// 		try {
-// 			const data = await axios.post('/order');
-// 			return data;
-// 		} catch (error) {
-// 			return console.log(error);
-// 			// return thunkAPI.rejectWithValue(error.response.data);
-// 		}
-// 	}
-// );
+export const fetchCreateOrder = createAsyncThunk(
+	'cart/fetchCreateOrder',
+	async ({ ...params }, thunkAPI) => {
+		try {
+			const data = await axios.post('/orders', { ...params });
+			return data;
+		} catch (error) {
+			return console.log(error);
+			// return thunkAPI.rejectWithValue(error.response.data);
+		}
+	}
+);
 
 const { items, totalPrice } = getCartFromLS();
 
@@ -59,20 +59,20 @@ const cartOrdersSlice = createSlice({
 			state.totalPrice = 0;
 		},
 	},
-	// extraReducers: {
-	// 	[fetchProducts.pending]: (state) => {
-	// 		state.products = null;
-	// 		state.status = 'loading';
-	// 	},
-	// 	[fetchProducts.fulfilled]: (state, action) => {
-	// 		state.products = action.payload;
-	// 		state.status = 'loaded';
-	// 	},
-	// 	[fetchProducts.rejected]: (state) => {
-	// 		state.products = null;
-	// 		state.status = 'error';
-	// 	},
-	// },
+	extraReducers: {
+		[fetchCreateOrder.pending]: (state) => {
+			state.cart = null;
+			state.status = 'loading';
+		},
+		[fetchCreateOrder.fulfilled]: (state, action) => {
+			state.cart = action.payload;
+			state.status = 'loaded';
+		},
+		[fetchCreateOrder.rejected]: (state) => {
+			state.cart = null;
+			state.status = 'error';
+		},
+	},
 });
 
 // export default productsSlice.reducer;

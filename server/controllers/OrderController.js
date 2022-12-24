@@ -5,7 +5,7 @@ export const createOrder = async (req, res) => {
 		const doc = new OrderModel({
 			items: req.body.items,
 			totalPrice: req.body.totalPrice,
-			userId: req.user._id,
+			userId: req.userId,
 		});
 
 		const order = await doc.save();
@@ -19,7 +19,7 @@ export const createOrder = async (req, res) => {
 	}
 };
 
-export const getAll = async (req, res) => {
+export const getOrdersAll = async (req, res) => {
 	try {
 		const orders = await OrderModel.find();
 		res.json(orders);

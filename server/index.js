@@ -39,10 +39,11 @@ app.post(
 	handleValidationErrors,
 	ProductController.createProduct
 );
-app.delete('/products/:id', ProductController.removeProduct);
+// app.delete('/products/:id', ProductController.removeProduct);
 // app.patch('/product', ProductController.update);
 
 app.post('/orders', checkAuth, OrderController.createOrder);
+app.get('/ordersHistory', checkAuth, OrderController.getOrdersAll);
 
 app.listen(PORT, (err) => {
 	if (err) {
