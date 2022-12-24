@@ -47,7 +47,8 @@ export const createProduct = async (req, res) => {
 			productName: req.body.productName,
 			model: req.body.model,
 			description: req.body.description,
-			// userId:req.userId,
+			price: req.body.price,
+			userId: req.userId,
 			imageUrl: req.body.imageUrl,
 		});
 
