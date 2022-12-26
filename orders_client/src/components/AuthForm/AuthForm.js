@@ -1,6 +1,6 @@
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -94,17 +94,17 @@ const AuthForm = () => {
 					<Form.Control.Feedback type='invalid'>{errors.password?.message}</Form.Control.Feedback>
 				</Form.Group>
 				<div className={styles.button}>
-					{/* {isLogin ? (
+					{isLogin ? (
 						<div>
 							Don't have an account?
-							<br /> <Link to='auth/register'>Create an account</Link>
+							<br /> <Link to='/auth/register'>Create an account</Link>
 						</div>
 					) : (
 						<div>
 							Have an account?
-							<br /> <Link to='auth/login'>Login</Link>
+							<br /> <Link to='/auth/login'>Login</Link>
 						</div>
-					)} */}
+					)}
 					<Button
 						className=' mt-4 '
 						md={{ span: 6, offset: 3 }}

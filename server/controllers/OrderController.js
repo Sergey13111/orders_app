@@ -21,12 +21,21 @@ export const createOrder = async (req, res) => {
 
 export const getOrdersAll = async (req, res) => {
 	try {
-		const orders = await OrderModel.find();
+		const orders = await OrderModel.find({ userId: req.userId });
 		res.json(orders);
 	} catch (error) {
 		console.log(error);
 		res.status(500).json({
 			message: 'Failed to receive orders',
 		});
+	}
+};
+
+export const getOneOrder = async (req, res) => {
+	const order = await OrderModel.findById(req.params.id);
+	if (order) {
+		res.send(order);
+	} else {
+		res.status(404).send({ message: 'Order Not Found' });
 	}
 };

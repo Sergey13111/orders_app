@@ -8,8 +8,6 @@ export const loginValidation = [
 export const registerValidation = [
 	body('email', 'Invalid mail format').isEmail(),
 	body('password', 'Password must be at least 5 characters').isLength({ min: 5 }),
-	// body('fullName', 'Enter full name').optional.isLength({ min: 3 }),
-	// body('avatarUrl', 'Wrong avatar link').optional().isURL(),
 ];
 
 export const productCreateValidation = [

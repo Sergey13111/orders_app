@@ -12,7 +12,7 @@ const Home = () => {
 						Register{' '}
 						<Link
 							className={styles.link}
-							to='auth/register'>
+							to='/auth/register'>
 							SignUp
 						</Link>
 					</span>
@@ -21,7 +21,7 @@ const Home = () => {
 						Authorization{' '}
 						<Link
 							className={styles.link}
-							to='auth/login'>
+							to='/auth/login'>
 							LogIn
 						</Link>
 					</span>

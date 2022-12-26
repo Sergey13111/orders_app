@@ -3,6 +3,7 @@ import { productsReducer } from './productsSlice';
 import { authReducer } from './authSlice';
 import { cartOrdersReducer } from './cartOrdersSlice';
 import { ordersHistoryReducer } from './ordersHistorySlice';
+import { detailsOrderReducer } from './detailsOrderSlice';
 
 const store = configureStore({
 	reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
 		auth: authReducer,
 		cart: cartOrdersReducer,
 		ordersHistory: ordersHistoryReducer,
+		order: detailsOrderReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

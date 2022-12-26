@@ -8,8 +8,7 @@ export const fetchOrdersHistory = createAsyncThunk(
 			const data = await axios.get('/ordersHistory');
 			return data;
 		} catch (error) {
-			return console.log(error);
-			// return thunkAPI.rejectWithValue(error.response.data);
+			return console.log(error.message);
 		}
 	}
 );

@@ -30,8 +30,6 @@ const Header = () => {
 		isMounted.current = true;
 	}, [items]);
 
-	console.log(isAuth);
-
 	return (
 		<>
 			<Navbar
@@ -61,8 +59,8 @@ const Header = () => {
 									</NavLink>
 									<NavLink
 										className={styles.navLink}
-										to='/orderHistory'>
-										Order History
+										to='/ordersHistory'>
+										History
 									</NavLink>
 									<NavLink
 										className={styles.navLink}

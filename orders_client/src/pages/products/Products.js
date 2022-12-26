@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { addItem } from '../../store/cartOrdersSlice';
 import { fetchProducts } from '../../store/productsSlice';
@@ -10,22 +9,6 @@ import styles from './Products.module.css';
 const Products = () => {
 	const dispatch = useDispatch();
 	const { products, status } = useSelector((state) => state.products);
-	const { items } = useSelector((state) => state.cart);
-
-	// if (items) {
-	// 	const cartItem = useSelector((state) => state.cart.items.find((obj) => obj._id === _id));
-	// }
-	// products &&
-	// 	(product = products.map((obj) => ({
-	// 		_id,
-	// 		productName,
-	// 		model,
-	// 		description,
-	// 		price,
-	// 		imageUrl,
-	// 	})));
-	console.log(items);
-
 	const isLoading = status === 'loading';
 
 	useEffect(() => {
@@ -44,19 +27,8 @@ const Products = () => {
 	const handleAddCart =
 		(...item) =>
 		() => {
-			console.log(...item);
-			// console.log({ id });
-			// const item = {
-			// 	_id,
-			// 	productName,
-			// 	model,
-			// 	price,
-			// 	imageUrl,
-			// };
 			dispatch(addItem(...item));
 		};
-
-	// console.log(products);
 
 	return (
 		<>
@@ -116,7 +88,6 @@ const Products = () => {
 					</Row>
 				</div>
 			</Container>
-			<Outlet />
 		</>
 	);
 };

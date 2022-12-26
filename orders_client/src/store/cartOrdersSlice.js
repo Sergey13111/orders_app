@@ -3,18 +3,14 @@ import { calcTotalPrice } from '../helpers/calcTotalPrice';
 import { getCartFromLS } from '../helpers/getCartFromLS';
 import axios from '../helpers/axios';
 
-export const fetchCreateOrder = createAsyncThunk(
-	'cart/fetchCreateOrder',
-	async ({ ...params }, thunkAPI) => {
-		try {
-			const data = await axios.post('/orders', { ...params });
-			return data;
-		} catch (error) {
-			return console.log(error);
-			// return thunkAPI.rejectWithValue(error.response.data);
-		}
+export const fetchCreateOrder = createAsyncThunk('cart/fetchCreateOrder', async ({ ...params }) => {
+	try {
+		const data = await axios.post('/orders', { ...params });
+		return data;
+	} catch (error) {
+		return console.log(error.message);
 	}
-);
+});
 
 const { items, totalPrice } = getCartFromLS();
 
@@ -29,8 +25,7 @@ const cartOrdersSlice = createSlice({
 	reducers: {
 		addItem(state, action) {
 			const findItem = state.items.find((obj) => obj._id === action.payload._id);
-			console.log(state);
-			console.log(action);
+
 			if (findItem) {
 				findItem.count++;
 			} else {
@@ -75,6 +70,5 @@ const cartOrdersSlice = createSlice({
 	},
 });
 
-// export default productsSlice.reducer;
 export const { addItem, removeItem, clearItems, minusItem } = cartOrdersSlice.actions;
 export const cartOrdersReducer = cartOrdersSlice.reducer;

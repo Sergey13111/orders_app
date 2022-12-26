@@ -1,6 +1,5 @@
 import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
 import { CartEmpty } from '../../components/CartEmpty';
 import styles from './CartOrders.module.css';
@@ -16,7 +15,6 @@ const CartOrders = () => {
 				<h1 className={styles.cartOrdersTitle}>Orders</h1>
 				<Cart />
 			</Container>
-			<Outlet />
 		</>
 	);
 };

@@ -6,6 +6,7 @@
 
 .cartEmptyTitle {
 	color: #a44313;
+	margin-top: 80px;
 }
 
 .linkBack {
@@ -16,10 +17,6 @@
 
 .backText {
 	margin-left: 4px;
-}
-
-.marginTop {
-	margin-top: 80px;
 }
 
 .svgCart {

@@ -6,8 +6,7 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async (_
 		const data = await axios.get('/products');
 		return data;
 	} catch (error) {
-		return console.log(error);
-		// return thunkAPI.rejectWithValue(error.response.data);
+		return console.log(error.message);
 	}
 });
 
@@ -35,7 +34,5 @@ const productsSlice = createSlice({
 		},
 	},
 });
-
-// export default productsSlice.reducer;
 
 export const productsReducer = productsSlice.reducer;

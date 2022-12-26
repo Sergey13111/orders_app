@@ -26,12 +26,6 @@ const CartItem = ({ _id, productName, model, price, imageUrl, count }) => {
 				xs={12}
 				md={3}>
 				<div className={styles.cartItemProductNameWrapper}>
-					{/* <div>
-						<img
-							src={imageUrl}
-							alt='Phone'
-						/>
-					</div> */}
 					<div className={styles.productName}>{productName}</div>
 					<div>{model}</div>
 				</div>

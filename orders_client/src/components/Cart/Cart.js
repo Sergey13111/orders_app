@@ -1,18 +1,16 @@
 import { Button, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { clearItems, fetchCreateOrder } from '../../store/cartOrdersSlice';
 import { CartItem } from '../CartItem';
 import styles from './Cart.module.css';
-
 
 const Cart = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { items, totalPrice } = useSelector((state) => state.cart);
-	// повторяется в хедере
 	const totalCount = items.reduce((sum, item) => sum + item.count, 0);
-	// ...ююююююююююююююююююююююююююююююююююююююююююююююююююююю
+
 	const onClickClear = () => {
 		if (window.confirm('Empty trash?')) {
 			dispatch(clearItems());
@@ -21,7 +19,7 @@ const Cart = () => {
 
 	const handlerCheckout = async () => {
 		try {
-			console.log(items, totalPrice);
+			// console.log(items, totalPrice);
 			await dispatch(fetchCreateOrder({ items, totalPrice }));
 			dispatch(clearItems());
 			localStorage.removeItem('cart');
@@ -78,7 +76,7 @@ const Cart = () => {
 					<Button
 						onClick={() => navigate(-1)}
 						variant='outline-secondary'
-						className='mt-3'>
+						className='my-4'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
 							width='16'
@@ -102,12 +100,11 @@ const Cart = () => {
 					<Button
 						onClick={handlerCheckout}
 						variant='outline-secondary'
-						className='mt-3'>
+						className='my-4'>
 						<span className={styles.button}>Checkout</span>
 					</Button>
 				</Col>
 			</Row>
-			<Outlet />
 		</>
 	);
 };

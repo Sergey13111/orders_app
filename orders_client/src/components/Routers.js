@@ -7,6 +7,7 @@ import { SignUp } from '../pages/signUp';
 import { LogIn } from '../pages/logIn';
 import { CartOrders } from '../pages/cartOrders';
 import { OrdersHistory } from '../pages/ordersHistory';
+import { DetailsOrder } from '../pages/detailsOrder';
 
 const Routers = () => {
 	return (
@@ -32,9 +33,14 @@ const Routers = () => {
 				element={<CartOrders />}
 			/>
 			<Route
-				path='orderHistory'
+				path='ordersHistory'
 				element={<OrdersHistory />}
 			/>
+			<Route
+				path='ordersHistory/:id'
+				element={<DetailsOrder />}
+			/>
+
 			<Route
 				path='*'
 				element={<NotFound />}

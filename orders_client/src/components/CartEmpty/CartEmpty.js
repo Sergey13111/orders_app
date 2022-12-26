@@ -1,12 +1,11 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-// import cartEmptyImg from '../../assets/';
 import styles from './CartEmpty.module.css';
 
 const CartEmpty = () => {
 	return (
 		<Container>
-			<Row className={styles.marginTop}>
+			<Row>
 				<Col className={styles.cartEmptyWrapper}>
 					<h2 className={styles.cartEmptyTitle}>Cart is empty</h2>
 					<i className={styles.svgCart}>
